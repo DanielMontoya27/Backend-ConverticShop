@@ -11,13 +11,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="tipo_documento")
+@Table(name="marca")
 
-public class TipoDocumento {
+public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipo_documento")
-    private Integer idTipoDocumento;
-    @Column(name = "tipo_documento")
-    private String tipoDocumento;
+    @Column(name = "id_marca")
+    private Integer idMarca;
+    private String marca;
+
 }

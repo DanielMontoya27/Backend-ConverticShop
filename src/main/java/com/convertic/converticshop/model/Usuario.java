@@ -11,24 +11,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Usuario")
-
-
+@Table(name="usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Integer idUsuario;
-    private Integer idTipoDocumento;
-
+    @Column(name = "numero_documento")
     private String numeroDocumento;
+    @Column(name = "id_tipo_documento")
+    private Integer idTipoDocumento;
     private String nombres;
     private String apellidos;
     private String email;
     private String password;
 
-    @Override
-    public String toString() {
-        return "Usuario [idUsuario=" + idUsuario + ", TipoDocumento=" + idTipoDocumento + ", nombres=" + nombres + ", apellidos=" + apellidos + ", email=" + email + ", password=" + password + "]";
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_documento", updatable = false, insertable = false)
+    private TipoDocumento tipo_documento;
 
 }
