@@ -1,0 +1,772 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.8
+-- Dumped by pg_dump version 13.8
+
+-- Started on 2023-03-16 15:59:57
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3 (class 2615 OID 2200)
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA public;
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- TOC entry 3075 (class 0 OID 0)
+-- Dependencies: 3
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 213 (class 1259 OID 84796)
+-- Name: categoria; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.categoria (
+    id_categoria integer NOT NULL,
+    categoria character varying(255)
+);
+
+
+ALTER TABLE public.categoria OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 84794)
+-- Name: categoria_id_categoria_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.categoria_id_categoria_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categoria_id_categoria_seq OWNER TO postgres;
+
+--
+-- TOC entry 3076 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: categoria_id_categoria_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.categoria_id_categoria_seq OWNED BY public.categoria.id_categoria;
+
+
+--
+-- TOC entry 205 (class 1259 OID 84754)
+-- Name: color; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.color (
+    id_color integer NOT NULL,
+    color character varying(255)
+);
+
+
+ALTER TABLE public.color OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 84752)
+-- Name: color_id_color_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.color_id_color_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.color_id_color_seq OWNER TO postgres;
+
+--
+-- TOC entry 3077 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: color_id_color_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.color_id_color_seq OWNED BY public.color.id_color;
+
+
+--
+-- TOC entry 207 (class 1259 OID 84762)
+-- Name: genero; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.genero (
+    id_genero integer NOT NULL,
+    genero character varying(255)
+);
+
+
+ALTER TABLE public.genero OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 84760)
+-- Name: genero_id_genero_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.genero_id_genero_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.genero_id_genero_seq OWNER TO postgres;
+
+--
+-- TOC entry 3078 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: genero_id_genero_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.genero_id_genero_seq OWNED BY public.genero.id_genero;
+
+
+--
+-- TOC entry 209 (class 1259 OID 84770)
+-- Name: marca; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.marca (
+    id_marca integer NOT NULL,
+    marca character varying(255)
+);
+
+
+ALTER TABLE public.marca OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 84768)
+-- Name: marca_id_marca_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.marca_id_marca_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.marca_id_marca_seq OWNER TO postgres;
+
+--
+-- TOC entry 3079 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: marca_id_marca_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.marca_id_marca_seq OWNED BY public.marca.id_marca;
+
+
+--
+-- TOC entry 214 (class 1259 OID 84863)
+-- Name: producto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.producto (
+    referencia character varying(255) NOT NULL,
+    stock integer,
+    descripcion character varying(255),
+    id_categoria integer,
+    id_color integer,
+    id_genero integer,
+    id_marca integer,
+    id_talla integer,
+    imagen character varying(255),
+    mas_buscados integer,
+    valor_unitario integer,
+    id_producto integer NOT NULL
+);
+
+
+ALTER TABLE public.producto OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 84900)
+-- Name: producto_id_producto_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.producto_id_producto_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.producto_id_producto_seq OWNER TO postgres;
+
+--
+-- TOC entry 3080 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: producto_id_producto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.producto_id_producto_seq OWNED BY public.producto.id_producto;
+
+
+--
+-- TOC entry 211 (class 1259 OID 84778)
+-- Name: tallas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tallas (
+    id_talla integer NOT NULL,
+    talla character varying(255)
+);
+
+
+ALTER TABLE public.tallas OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 84776)
+-- Name: tallas_id_talla_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tallas_id_talla_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tallas_id_talla_seq OWNER TO postgres;
+
+--
+-- TOC entry 3081 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: tallas_id_talla_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tallas_id_talla_seq OWNED BY public.tallas.id_talla;
+
+
+--
+-- TOC entry 201 (class 1259 OID 84727)
+-- Name: tipo_documento; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_documento (
+    id_tipo_documento integer NOT NULL,
+    tipo_documento character varying(255)
+);
+
+
+ALTER TABLE public.tipo_documento OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 84725)
+-- Name: tipo_documento_id_tipo_documento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tipo_documento_id_tipo_documento_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tipo_documento_id_tipo_documento_seq OWNER TO postgres;
+
+--
+-- TOC entry 3082 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: tipo_documento_id_tipo_documento_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tipo_documento_id_tipo_documento_seq OWNED BY public.tipo_documento.id_tipo_documento;
+
+
+--
+-- TOC entry 203 (class 1259 OID 84735)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario (
+    id_usuario integer NOT NULL,
+    apellidos character varying(255),
+    email character varying(255),
+    id_tipo_documento integer,
+    nombres character varying(255),
+    numero_documento character varying(255),
+    password character varying(255)
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 84733)
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.usuario_id_usuario_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usuario_id_usuario_seq OWNER TO postgres;
+
+--
+-- TOC entry 3083 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.usuario_id_usuario_seq OWNED BY public.usuario.id_usuario;
+
+
+--
+-- TOC entry 2900 (class 2604 OID 84799)
+-- Name: categoria id_categoria; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categoria ALTER COLUMN id_categoria SET DEFAULT nextval('public.categoria_id_categoria_seq'::regclass);
+
+
+--
+-- TOC entry 2896 (class 2604 OID 84757)
+-- Name: color id_color; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.color ALTER COLUMN id_color SET DEFAULT nextval('public.color_id_color_seq'::regclass);
+
+
+--
+-- TOC entry 2897 (class 2604 OID 84765)
+-- Name: genero id_genero; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.genero ALTER COLUMN id_genero SET DEFAULT nextval('public.genero_id_genero_seq'::regclass);
+
+
+--
+-- TOC entry 2898 (class 2604 OID 84773)
+-- Name: marca id_marca; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marca ALTER COLUMN id_marca SET DEFAULT nextval('public.marca_id_marca_seq'::regclass);
+
+
+--
+-- TOC entry 2901 (class 2604 OID 84902)
+-- Name: producto id_producto; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto ALTER COLUMN id_producto SET DEFAULT nextval('public.producto_id_producto_seq'::regclass);
+
+
+--
+-- TOC entry 2899 (class 2604 OID 84781)
+-- Name: tallas id_talla; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tallas ALTER COLUMN id_talla SET DEFAULT nextval('public.tallas_id_talla_seq'::regclass);
+
+
+--
+-- TOC entry 2894 (class 2604 OID 84730)
+-- Name: tipo_documento id_tipo_documento; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_documento ALTER COLUMN id_tipo_documento SET DEFAULT nextval('public.tipo_documento_id_tipo_documento_seq'::regclass);
+
+
+--
+-- TOC entry 2895 (class 2604 OID 84738)
+-- Name: usuario id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario ALTER COLUMN id_usuario SET DEFAULT nextval('public.usuario_id_usuario_seq'::regclass);
+
+
+--
+-- TOC entry 3067 (class 0 OID 84796)
+-- Dependencies: 213
+-- Data for Name: categoria; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.categoria (id_categoria, categoria) FROM stdin;
+1	Camisas
+2	Camisetas
+3	Chaquetas
+5	Jeans
+7	Faldas
+4	Vestidos
+\.
+
+
+--
+-- TOC entry 3059 (class 0 OID 84754)
+-- Dependencies: 205
+-- Data for Name: color; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.color (id_color, color) FROM stdin;
+1	Blanco
+2	Negro
+3	Gris
+4	Amarillo
+5	Azul
+6	Rojo
+7	Verde
+8	Café
+9	Morado
+\.
+
+
+--
+-- TOC entry 3061 (class 0 OID 84762)
+-- Dependencies: 207
+-- Data for Name: genero; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.genero (id_genero, genero) FROM stdin;
+1	Mujer
+2	Hombre
+\.
+
+
+--
+-- TOC entry 3063 (class 0 OID 84770)
+-- Dependencies: 209
+-- Data for Name: marca; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.marca (id_marca, marca) FROM stdin;
+1	Chevignon
+2	Americanino
+3	Esprit
+4	Mango
+5	Edc
+\.
+
+
+--
+-- TOC entry 3068 (class 0 OID 84863)
+-- Dependencies: 214
+-- Data for Name: producto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.producto (referencia, stock, descripcion, id_categoria, id_color, id_genero, id_marca, id_talla, imagen, mas_buscados, valor_unitario, id_producto) FROM stdin;
+111787	100	Camisa de Mujer, Silueta Recta Manga Sisa con Bolero Cuello Redondo	1	6	1	1	3	111685.jpg	0	129900	5
+415865	30	Vestido Corto, Escote en V Manga Larga - Cortes en Cintura	4	1	1	1	5	415865.jpg	0	229000	11
+512525	100	Jean Momfit claro para mujer	5	5	1	2	16	512525.jpg	0	165000	12
+312529	100	Chaqueta en tono claro con bolsillos para mujer	3	5	1	2	4	312529.jpg	0	235000	13
+313835	100	Chaqueta para mujer acolchada con capucha plegable	3	8	1	2	4	313835.jpg	0	224000	14
+111766	100	Camisa de Mujer, Silueta Ajustada Manga Corta Cuello Camisero	1	7	1	1	5	111766.jpg	0	165900	6
+121184	100	Camisa Premium de Hombre, Slim Fit Manga Larga	1	1	2	1	2	121184.jpg	0	154900	3
+221598	100	Camiseta Básica de Hombre, Slim Fit Cuello Redondo	2	5	2	1	3	221598.jpg	0	109900	4
+221685	100	Camiseta Básica de Hombre, Slim Fit Cuello en V	2	6	2	1	4	221685.jpg	0	109900	2
+211118	50	Camiseta con diseño en cuello y mangas, para mujer	2	8	1	2	4	211118.jpg	0	65000	10
+522547	100	Jean St Louis tono oscuro para hombre	5	5	2	2	9	522547.jpg	0	161900	7
+522565	100	Jean Slim tono medio para hombre	5	5	2	2	8	522565.jpg	0	161900	8
+323945	50	Chaqueta para hombre acolchada doble faz con capucha plegable	3	5	2	2	5	323945.jpg	0	292000	16
+415896	20	Vestido Largo Tipo Summer, Escote En V Tirantes Amplios - Fondo Entero	4	2	1	1	5	415896.jpg	0	175000	15
+111101	100	Camisa de Mujer, Silueta Oversized Manga Larga	1	1	1	1	1	111101.jpg	0	149900	1
+512523	100	Jean Straight tono medio para mujer	5	5	1	2	15	512523.jpg	0	148000	9
+\.
+
+
+--
+-- TOC entry 3065 (class 0 OID 84778)
+-- Dependencies: 211
+-- Data for Name: tallas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tallas (id_talla, talla) FROM stdin;
+8	32
+9	34
+10	36
+11	38
+12	40
+13	42
+14	6
+15	8
+16	10
+17	12
+1	XXS
+2	XS
+3	S
+4	M
+5	L
+7	XXL
+18	14
+6	XL
+\.
+
+
+--
+-- TOC entry 3055 (class 0 OID 84727)
+-- Dependencies: 201
+-- Data for Name: tipo_documento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_documento (id_tipo_documento, tipo_documento) FROM stdin;
+1	Cédula de Ciudadanía
+2	Cédula de Extranjería
+\.
+
+
+--
+-- TOC entry 3057 (class 0 OID 84735)
+-- Dependencies: 203
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.usuario (id_usuario, apellidos, email, id_tipo_documento, nombres, numero_documento, password) FROM stdin;
+2	Cardona Pulgarin	vivianacardona207@gmail.com	1	Viviana	43927864	Viviana2023
+1	Montoya Mesa	daniesmon1913@gmail.com	1	Daniel Esteban	1128445279	Daniel2023
+3	PEREZ	juan@gmail.com	1	JUAN	15454541515	1234aA
+4	NARANJO	felipe@gmail.com	1	FELIPE	15454541515	Felipe2023
+\.
+
+
+--
+-- TOC entry 3084 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: categoria_id_categoria_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.categoria_id_categoria_seq', 7, true);
+
+
+--
+-- TOC entry 3085 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: color_id_color_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.color_id_color_seq', 9, true);
+
+
+--
+-- TOC entry 3086 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: genero_id_genero_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.genero_id_genero_seq', 2, true);
+
+
+--
+-- TOC entry 3087 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: marca_id_marca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.marca_id_marca_seq', 5, true);
+
+
+--
+-- TOC entry 3088 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: producto_id_producto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.producto_id_producto_seq', 16, true);
+
+
+--
+-- TOC entry 3089 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: tallas_id_talla_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tallas_id_talla_seq', 18, true);
+
+
+--
+-- TOC entry 3090 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: tipo_documento_id_tipo_documento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_documento_id_tipo_documento_seq', 2, true);
+
+
+--
+-- TOC entry 3091 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.usuario_id_usuario_seq', 4, true);
+
+
+--
+-- TOC entry 2915 (class 2606 OID 84801)
+-- Name: categoria categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categoria
+    ADD CONSTRAINT categoria_pkey PRIMARY KEY (id_categoria);
+
+
+--
+-- TOC entry 2907 (class 2606 OID 84759)
+-- Name: color color_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.color
+    ADD CONSTRAINT color_pkey PRIMARY KEY (id_color);
+
+
+--
+-- TOC entry 2909 (class 2606 OID 84767)
+-- Name: genero genero_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.genero
+    ADD CONSTRAINT genero_pkey PRIMARY KEY (id_genero);
+
+
+--
+-- TOC entry 2917 (class 2606 OID 84911)
+-- Name: producto id_producto_PK; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT "id_producto_PK" PRIMARY KEY (id_producto);
+
+
+--
+-- TOC entry 2911 (class 2606 OID 84775)
+-- Name: marca marca_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marca
+    ADD CONSTRAINT marca_pkey PRIMARY KEY (id_marca);
+
+
+--
+-- TOC entry 2913 (class 2606 OID 84783)
+-- Name: tallas tallas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tallas
+    ADD CONSTRAINT tallas_pkey PRIMARY KEY (id_talla);
+
+
+--
+-- TOC entry 2903 (class 2606 OID 84732)
+-- Name: tipo_documento tipo_documento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_documento
+    ADD CONSTRAINT tipo_documento_pkey PRIMARY KEY (id_tipo_documento);
+
+
+--
+-- TOC entry 2905 (class 2606 OID 84743)
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario);
+
+
+--
+-- TOC entry 2923 (class 2606 OID 84891)
+-- Name: producto fk5rvw4tvbqy6flrfura37i35ap; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT fk5rvw4tvbqy6flrfura37i35ap FOREIGN KEY (id_talla) REFERENCES public.tallas(id_talla);
+
+
+--
+-- TOC entry 2921 (class 2606 OID 84881)
+-- Name: producto fk7i3ue2vx91r9o343xxu2yf1m1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT fk7i3ue2vx91r9o343xxu2yf1m1 FOREIGN KEY (id_genero) REFERENCES public.genero(id_genero);
+
+
+--
+-- TOC entry 2919 (class 2606 OID 84871)
+-- Name: producto fk9nyueixdsgbycfhf7allg8su; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT fk9nyueixdsgbycfhf7allg8su FOREIGN KEY (id_categoria) REFERENCES public.categoria(id_categoria);
+
+
+--
+-- TOC entry 2920 (class 2606 OID 84876)
+-- Name: producto fka7gj5dspc0eoccem96ue2nnpl; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT fka7gj5dspc0eoccem96ue2nnpl FOREIGN KEY (id_color) REFERENCES public.color(id_color);
+
+
+--
+-- TOC entry 2918 (class 2606 OID 84747)
+-- Name: usuario fki84twx6f7o0pu9mbi856hhp7s; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT fki84twx6f7o0pu9mbi856hhp7s FOREIGN KEY (id_tipo_documento) REFERENCES public.tipo_documento(id_tipo_documento);
+
+
+--
+-- TOC entry 2922 (class 2606 OID 84886)
+-- Name: producto fkpmfw7ds3rfuwge05ehb216r82; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.producto
+    ADD CONSTRAINT fkpmfw7ds3rfuwge05ehb216r82 FOREIGN KEY (id_marca) REFERENCES public.marca(id_marca);
+
+
+-- Completed on 2023-03-16 15:59:57
+
+--
+-- PostgreSQL database dump complete
+--
+
